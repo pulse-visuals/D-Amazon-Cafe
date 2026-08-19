@@ -9,11 +9,6 @@ import { SEED_SUBGROUP_LABELS } from "@/lib/db/subgroup-map";
 
 export const dynamic = "force-dynamic";
 
-export async function generateStaticParams() {
-  const categories = await getCategories();
-  return categories.map((c) => ({ category: c.slug }));
-}
-
 export async function generateMetadata({ params }: { params: Promise<{ category: string }> }): Promise<Metadata> {
   const { category } = await params;
   const categories = await getCategories();

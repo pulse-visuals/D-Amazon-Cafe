@@ -1,6 +1,11 @@
 import type { MetadataRoute } from "next";
 import { getCategories } from "@/lib/menu";
 
+// Regenerate per-request instead of baking category URLs in at build time —
+// the build environment (e.g. Railway, Vercel, CI) doesn't have a seeded
+// database available, only the running server does.
+export const dynamic = "force-dynamic";
+
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
