@@ -1,0 +1,149 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme inline {
+  /* Tropical D'Amazon Cafe palette */
+  --color-jungle-950: #06231b;
+  --color-jungle-900: #0a2e22;
+  --color-jungle-800: #0f3d2c;
+  --color-jungle-700: #144d38;
+  --color-jungle-600: #1a6047;
+  --color-jungle-500: #21754f; /* primary green */
+  --color-jungle-400: #2f9166;
+  --color-jungle-300: #57b189;
+  --color-jungle-200: #9dd7b8;
+  --color-jungle-100: #d3f0df;
+  --color-jungle-50: #eefbf3;
+
+  --color-teal-600: #0f766e;
+  --color-teal-500: #14958a;
+
+  --color-gold-600: #b8860b;
+  --color-gold-500: #d9a520;
+  --color-gold-400: #f0c33f;
+  --color-gold-300: #f7d966;
+
+  --color-tomato-600: #b3261e;
+  --color-tomato-500: #d9382c;
+  --color-tomato-400: #ef5142;
+
+  --color-cream-50: #fffdf7;
+  --color-cream-100: #fff8ea;
+  --color-wood-700: #5b3a22;
+  --color-wood-600: #6f4a2c;
+
+  /* Using robust system font stacks (no external font downloads) for fast,
+     offline-safe loading and top-tier performance scores. */
+  --font-display: ui-rounded, "SF Pro Rounded", "Segoe UI", "Nunito", Verdana, sans-serif;
+  --font-body: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, ui-sans-serif, sans-serif;
+
+  --animate-float-slow: float-slow 8s ease-in-out infinite;
+  --animate-float-slower: float-slow 12s ease-in-out infinite;
+  --animate-drift: drift 22s linear infinite;
+  --animate-pulse-soft: pulse-soft 2.4s ease-in-out infinite;
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-fade-up: fade-up 0.6s ease forwards;
+  --animate-shimmer: shimmer 2.2s linear infinite;
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-18px) rotate(4deg); }
+  }
+  @keyframes drift {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(-40px, 60px) rotate(20deg); }
+  }
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.06); }
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+}
+
+:root {
+  --background: var(--color-cream-50);
+  --foreground: var(--color-jungle-950);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+/* Respect reduced-motion preference globally */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--color-gold-400);
+  color: var(--color-jungle-950);
+}
+
+/* Custom scrollbar for a premium feel */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-jungle-50);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-jungle-300);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-jungle-400);
+}
+
+.bg-leaf-texture {
+  background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.06) 0, transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(255,255,255,0.05) 0, transparent 45%);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(90deg, #f0c33f, #d9a520 60%, #f7d966);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.shimmer-bg {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+  background-size: 200% 100%;
+}
+
+.card-shadow {
+  box-shadow: 0 10px 30px -12px rgba(6, 35, 27, 0.35), 0 2px 8px -2px rgba(6, 35, 27, 0.15);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
